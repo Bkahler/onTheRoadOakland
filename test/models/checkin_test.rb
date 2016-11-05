@@ -2,7 +2,7 @@ require 'test_helper'
 
 class CheckinTest < ActiveSupport::TestCase
   def setup
-    @checkin = Checkin.create(name: 'test name',comment: 'test comment')
+    @checkin = Checkin.create(name: 'test name',comment: 'test comment', location_id: 1)
   end
   test 'category should be valid' do
     assert @checkin.valid?
