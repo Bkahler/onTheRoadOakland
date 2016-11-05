@@ -1,7 +1,7 @@
 class CheckinsController < ApplicationController
 
   def index
-    @checkings = Checkin.all
+    @checkins = Checkin.all
   end
 
   def new
