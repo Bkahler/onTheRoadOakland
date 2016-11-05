@@ -1,7 +1,16 @@
 require 'test_helper'
 
 class CheckinTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  def setup
+    @checkin = Checkin.create(name: 'test name',comment: 'test comment')
+  end
+  test 'category should be valid' do
+    assert @checkin.valid?
+  end
+
+  test 'name should be present' do
+    @checkin.name = " "
+    assert_not @checkin.valid?
+  end
+
 end
