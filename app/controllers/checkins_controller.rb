@@ -9,7 +9,7 @@ class CheckinsController < ApplicationController
   end
 
   def create
-    @checkin = Article.new(article_params)
+    @checkin = Checkin.new(checkin_params)
 
     if @checkin.save
       flash[:notice] = 'Your check-in was successfully saved!'
