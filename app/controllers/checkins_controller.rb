@@ -24,6 +24,7 @@ class CheckinsController < ApplicationController
   end
 
   def show
+    binding.pry
     @location = Location.find_by_id(params[:id])
     @checkins = @location.checkins
     @checkin = Checkin.new
@@ -46,6 +47,6 @@ class CheckinsController < ApplicationController
   private
 
   def checkin_params
-    params.require(:checkin).permit(:name, :comment, :location_id)
+    params.require(:checkin).permit(:name, :comment, :location_id, :image)
   end
 end
