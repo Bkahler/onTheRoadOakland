@@ -10,7 +10,6 @@ class CheckinsController < ApplicationController
 
   def create
     @checkin = Checkin.new(checkin_params)
-    binding.pry
     if @checkin.save
       flash[:notice] = 'Your check-in was successfully saved!'
       respond_to do |format|
