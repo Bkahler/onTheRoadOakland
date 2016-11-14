@@ -10,7 +10,6 @@ class CheckinsController < ApplicationController
 
   def create
     @checkin = Checkin.new(checkin_params)
-
     if @checkin.save
       flash[:notice] = 'Your check-in was successfully saved!'
       respond_to do |format|
@@ -46,6 +45,6 @@ class CheckinsController < ApplicationController
   private
 
   def checkin_params
-    params.require(:checkin).permit(:name, :comment, :location_id)
+    params.require(:checkin).permit(:name, :comment, :location_id, :image)
   end
 end
