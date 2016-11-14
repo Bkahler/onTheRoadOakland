@@ -25,7 +25,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'mini_magick'
 gem 'refile', require: ['refile/rails','refile/image_processing']
-
+gem 'remotipart', '~> 1.0'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

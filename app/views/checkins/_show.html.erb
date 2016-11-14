@@ -21,7 +21,7 @@
     <span style="font-size:25px"><%= f.name %></span><br>
        <%= simple_format(f.comment) %>
        <% if f.image.present? %>
-          <p> Testings</p>
+         <p><%= image_tag attachment_url(f, :image, :fill, 300, 300) %></p>
        <% end %>
        <span style="font-size:12px">&#149;<%= f.created_at.strftime("%b %e, %Y %l:%M %p") %></span><br>
     <br>
