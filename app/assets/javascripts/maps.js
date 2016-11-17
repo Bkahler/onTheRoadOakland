@@ -30,7 +30,7 @@ function initialize_map(){
 		$.get("/checkins/" + e.layer.feature.properties.location_id); // fyi this used to have another ,e.layer.etc
 
 		// fills the mobile view with class for content_div
-		$('.content_div').animate({height:"100%"}, 1000);
+		$('.content_div').css('display','block').animate({height:"100%"}, 1000);
 		$('#back_button').fadeIn();
 	});
 
@@ -40,7 +40,7 @@ function initialize_map(){
 	})
 
 	// Closes the marker popup when map is clicked
-	map.on('click',function(e){ });
+	// map.on('click',function(e){ });
 
 	$('body').on('click', "#submit_button", function(){
 		setTimeout(function(){
@@ -48,5 +48,9 @@ function initialize_map(){
 		},3000);
 	});
 
+
+	$('.splash').on('click', function(){
+		$('.splash').fadeOut(500);
+	})
 
 };
