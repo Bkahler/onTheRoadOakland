@@ -18,7 +18,7 @@
   <%= render 'form' %>
 
   <br>
-  <% @location.checkins.each do |f| %>
+  <% @location.checkins.reverse_order.each do |f| %>
     <span style="font-size:25px"><%= f.name %></span><br>
        <%= simple_format(f.comment) %>
        <% if f.image.present? %>

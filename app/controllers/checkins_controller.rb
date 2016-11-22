@@ -1,7 +1,7 @@
 class CheckinsController < ApplicationController
 
   def index
-    @checkins = Checkin.all
+    @checkins = Checkin.all.reverse_order
   end
 
   def new
@@ -26,7 +26,7 @@ class CheckinsController < ApplicationController
 
   def show
     @location = Location.find_by_id(params[:id])
-    @checkins = @location.checkins
+    @checkins = @location.checkins.reverse_order
     @checkin = Checkin.new
 
     respond_to do |format|
@@ -35,7 +35,7 @@ class CheckinsController < ApplicationController
   end
 
   def all_checkins
-    @all_checkins = Checkin.all
+    @all_checkins = Checkin.all.reverse_order
     @locations = Location.all
 
     respond_to do |format|
