@@ -3,29 +3,29 @@
     <div style="color:red" id="error_explanation">
       <p>Your check-in didn't save:</p>
       <% @checkin.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li><br>
+        <li><%= msg %></li>
       <% end %>
 
     </div>
   <% end %>
 
   <%= f.hidden_field :location_id, value: @location.id %>
-  <div class="field">
+  <div class="field name-field">
     <%= f.label :name %>
     <%= f.text_field :name, placeholder: "What do they call you?" %>
   </div>
-  <div class="field">
+  <div class="field comment-field">
     <%= f.label :comment %>&nbsp;<a style="color:red" class="about_modal" data-toggle="modal" data-target="#commentModal">(?)</a>
 
     <%= f.text_area :comment, cols: 40, rows: 2, placeholder: "What do you think? - Click the ? for a tip" %>
   </div>
-  <div class="field">
+  <div class="field image-upload">
     <%= f.label :image %>
     <%= f.file_field :image %>
   </div>
   <div id="submit_button" class="actions">
     <%= f.submit 'Check in!' %>
-    <p style="color:pink;font-size:15px;margin-top:6px">*Photo uploads take 5-30 seconds. Please be patient.</p>
+    <p class="upload-note">*Photo uploads take 5-30 seconds. Please be patient.</p>
   </div>
   <!-- create some scroll space after form if no checkins there -->
     <% if !@location.checkins.any? %>
