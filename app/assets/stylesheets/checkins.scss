@@ -259,9 +259,20 @@ body .commentModal {
 
 
 #back_button {
-	display: none;
+	// display: none;
 	top: 3000px;
 	position: absolute;
+	background-color: #16a085;
+	color: #ecf0f1;
+	font-size: 16px;
+	display: block;
+	margin: 40px 5px 0px 0px;
+	float: right;
+	top: -40px;
+	position: relative;
+	&:hover {
+		background-color: #1abc9c;
+	}
 }
 
 .notice {
@@ -269,7 +280,6 @@ body .commentModal {
 	font-size: 17px;
 	text-align: center;
 }
-
 .notice_hide {
 	display: none;
 }
@@ -377,7 +387,6 @@ body .commentModal {
 	vertical-align: 20px; /*creates a space at bottom of buttons*/
 }
 
-
 .back_link, .back_link:hover {
 	font-size: 30px;
 	margin-left: 40%;
@@ -413,22 +422,6 @@ body .commentModal {
 		width: 100%;
 		font-size: 20px;
 		margin: 0px 20px 0 20px;
-	}
-
-
-	#back_button {
-		background-color: #16a085;
-		color: #ecf0f1;
-		font-size: 16px;
-		display: block;
-		margin: 40px 5px 0px 0px;
-		float: right;
-		top: -40px;
-		position: relative;
-	}
-
-	#back_button:hover {
-		background-color: #1abc9c;
 	}
 
 	#site-title {
