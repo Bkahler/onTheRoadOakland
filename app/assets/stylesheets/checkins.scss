@@ -6,12 +6,12 @@
 
 // media-query breakpoints
 @mixin large-screen {
-  @media only screen and (min-width: 768) {
+  @media only screen and (min-width: 768px) {
     @content;
   }
 }
 @mixin small-screen {
-  @media only screen and (max-width: 767) {
+  @media only screen and (max-width: 767px) {
     @content;
   }
 }
@@ -45,57 +45,52 @@ hr {
 	margin: 15px 0 0 0;
 }
 
+a:hover {
+	@include transition;
+}
+
 .navbar {
+	color: white;
 	margin: 0;
 	-webkit-margin-before:0em;
 	-webkit-margin-after:0em;
 }
 
-a:hover {
-	-webkit-transition: all 0.4s ease;
-	-moz-transition: all 0.4s ease;
-	-o-transition: all 0.4s ease;
-	transition: all 0.4s ease;
-}
-
-.navbar {
-	color: white;
-}
-
-.navbar-brand {
+.nav_title {
 	font-family: 'Cherry Cream Soda', cursive;
+	font-size: 25px;
+	@include small-screen {
+		font-size: 14px;
+		letter-spacing: -1px;
+	}
 	.subtitle {
 		font-size: 20px;
 		letter-spacing: 2px;
+		@include small-screen {
+			font-size: 13px;
+			letter-spacing: 0;
+		}
 	}
 }
 
-.nav_title {
-	font-size: 25px;
-	margin: -3px 0 0 -20px;
+.navbar-icon {
+	display: block;
 	@include small-screen {
-		font-size: 16px;
-		letter-spacing: -1px;
+		display: none;
 	}
 }
 
-
-.nav_bird {
+.nav_tree {
 	width: 30px;
 	height: auto;
 	float: left;
 	margin: -7px -4px 0px -3px;
 	border-radius: 3px;
-	-webkit-transition: all 0.4s ease;
-	-moz-transition: all 0.4s ease;
-	-o-transition: all 0.4s ease;
+	@include transition;
 	&:hover {
 		-webkit-box-shadow: 0px 0px 15px 0px rgba(255, 255, 255, 0.75);
 		-moz-box-shadow:    0px 0px 15px 0px rgba(255, 255, 255, 0.75);
 		box-shadow:         0px 0px 15px 0px rgba(255, 255, 255, 0.75);
-	}
-	@include small-screen {
-		display: none;
 	}
 }
 
@@ -162,15 +157,15 @@ a:hover {
 		text-align: center;
 		margin: 40px 10px 10px 10px;
 		font-size: 22px;
-		@include small-screen{
+		@include small-screen {
 			position: fixed;
-			margin: 10px 10px 10px 10px;
+			margin: 80px 10px 10px 10px;
 		}
 	}
 	#welcome_title {
 		line-height: 20px;
 		margin: 20px 0 20px 0;
-		@include small-screen{
+		@include small-screen {
 			margin-top: 5px
 		}
 	}
@@ -196,7 +191,10 @@ a:hover {
 	display: block;
   margin: 0 auto;
   padding: 50px 0 15px 0;
-  border-radius: 4px;
+  @include small-screen {
+  	width: 80%;
+  	padding: 40px 0 15px 0;
+  }
 }
 
 .content_header,
@@ -224,7 +222,6 @@ a:hover {
 	@include small-screen {
 		width: 100%;
 		font-size: 20px;
-		margin: 0px 20px 0 20px;
 	}
 }
 .upload-note {
@@ -311,6 +308,11 @@ body .commentModal {
 	@include transition;
 	&:hover {
 		background-color: #1abc9c;
+	}
+	@include small-screen {
+    top: 85px;
+    right: 15px;
+    font-size: 14px;
 	}
 }
 
