@@ -75,6 +75,7 @@ a:hover {
 
 .navbar-icon {
 	display: block;
+  margin: 8px 0 -10px;
 	@include small-screen {
 		display: none;
 	}
