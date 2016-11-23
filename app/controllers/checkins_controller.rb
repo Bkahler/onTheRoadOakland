@@ -10,10 +10,12 @@ class CheckinsController < ApplicationController
 
   def create
     @checkin = Checkin.new(checkin_params)
+    @location = @checkin.location
+
     if @checkin.save
       flash[:notice] = 'Your check-in was successfully saved!'
       respond_to do |format|
-        format.js
+        format.js { render :show }
       end
     else
       respond_to do |format|

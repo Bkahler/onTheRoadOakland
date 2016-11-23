@@ -11,8 +11,8 @@
   <script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.js'></script>
   <link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.css' rel='stylesheet' />
 
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => false %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
   <%= csrf_meta_tags %>
 
   <script>
@@ -44,7 +44,7 @@
       </ul>
 
       <ul class="nav navbar-nav">
-        <li><a href="/_allcheckins.html.erb">See all the entries</a></li>
+        <li><%= link_to 'View All Entries', all_checkins_path%></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
