@@ -25,13 +25,15 @@
 }
 
 
+$buttons: #1B8E99;
+
 html, body {
   margin: 0;
   padding: 0;
   height: 100%;
   width: 100%;
   background-color: #ccc;
-  font-family: 'Varela Round', sans-serif;
+  font-family: 'Spinnaker', sans-serif;
 }
 
 h2 {
@@ -130,7 +132,7 @@ a:hover {
 	background-color: rgba(0,0,0,0.8);
 	color: #fff;
 	font-size: 20px;
-	padding: 0 200px;
+	padding: 0 280px;
 	width: 100%;
 	top: 0;
 	border: 0;
@@ -229,8 +231,35 @@ a:hover {
 		font-size: 20px;
 	}
 }
+
+.comment-field {
+	padding-top: 15px;
+}
+
+.image-upload {
+	padding-top: 5px;
+	input {
+		color: #fff;
+	}
+}
+
+#submit_button {
+	input {
+		@include transition;
+		color: #fff !important;
+		margin-top: 20px;
+		display: block;
+		background-color: $buttons;
+		border: 0;
+		padding: 5px;
+		&:hover {
+			background-color: darken($buttons, 20%);
+		}
+  }
+}
+
 .upload-note {
-	color: pink;
+	color: red;
 	font-size: 15px;
 	margin-top: 6px;
 }
@@ -303,22 +332,27 @@ body .commentModal {
 }
 
 #back_button {
-	background-color: #16a085;
+	background-color: $buttons;
 	color: #ecf0f1;
 	font-size: 16px;
 	display: block;
-	top: 80px;
-	right: 220px;
+	top: 105px;
+	right: 295px;
 	position: absolute;
+	border-radius: 0;
 	@include transition;
 	&:hover {
-		background-color: #1abc9c;
+		background-color: darken($buttons, 20%);
 	}
 	@include small-screen {
     top: 85px;
     right: 15px;
     font-size: 14px;
 	}
+}
+
+.btn-default {
+	border: 0 !important;
 }
 
 .notice {
@@ -374,7 +408,11 @@ body .commentModal {
 	color: #fff;
 	padding: 50px 10px 30px 10px;
 	width: 100%;
+	min-height: 100vh;
 	border: 0;
+	h1 {
+		padding: 0 15px;
+	}
 }
 
 #each_one {
