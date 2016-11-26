@@ -120,6 +120,10 @@ a:hover {
 	z-index: 99
 }
 
+.marker {
+	cursor: pointer;
+}
+
 .content_div {
 	display: none;
 	position: absolute;

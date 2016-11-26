@@ -10,39 +10,91 @@ $(window).load(function(){
 
 function initialize_map(event){
 
-	var mq = window.matchMedia( '(min-width: 767px)' ); // Javascript media query
-
-	if (mq.matches){
-		var	map = new L.mapbox.map('map', 'panicbus.23p6efg5').setView([37.810661, -122.270213], 15); //set map center for desktop size
-	} else {
-		var	map = new L.mapbox.map('map', 'panicbus.23p6efg5').setView([37.810661, -122.270213], 14); //set map center for mobile size
-	};
-
-	// var stamenLayer = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.png', {attribution: 'Map tiles by <a href='http://stamen.com'>Stamen Design</a>, under <a href='http://creativecommons.org/licenses/by/3.0'>CC BY 3.0</a>. Data by <a href='http://openstreetmap.org'>OpenStreetMap</a>, under <a href='http://creativecommons.org/licenses/by-sa/3.0'>CC BY SA</a>.'}).addTo(map);
-
-
-	// adds the GeoJson to the map layer from route.js
-	map.featureLayer.setGeoJSON(geoJson_features);
-
-	// this is the marker click listener
-	map.featureLayer.on('click',function(e) {
-		$.get('/checkins/' + e.layer.feature.properties.location_id); // fyi this used to have another ,e.layer.etc
-		// fills the mobile view with class for content_div
-		$('.content_div').css('display','block').animate({height:'100%'}, 1000);
-		$('#back_button').fadeIn();
+	mapboxgl.accessToken = 'pk.eyJ1IjoicGFuaWNidXMiLCJhIjoiS1l5dkdoYyJ9.l3sODWuJFbsCxrVUAe3K0Q'
+	var map = new mapboxgl.Map({
+		container: 'map',
+		style: 'mapbox://styles/mapbox/light-v9',
+		center: [-122.267548, 37.811635],
+		pitch: 60, // pitch
+		bearing: -60, // bearing
+		zoom: 9
 	});
 
-	// map.featureLayer.trigger(marker, 'click');
 
+	// geojson defined in route.js //
+	////////////////////////////////
+
+	geojson.features.forEach(function(marker) {
+		// create a DOM element for the marker
+		var el = document.createElement('div');
+		el.className = 'marker';
+		el.style.backgroundImage = 'url(../assets/projector2-128.png)';
+		el.style.width = marker.properties.iconSize[0] + 'px';
+		el.style.height = marker.properties.iconSize[1] + 'px';
+
+		el.addEventListener('click', function() {
+			$.get('/checkins/' + marker.properties.location_id);
+			$('.content_div').css('display','block').animate({height:'100%'}, 1000);
+			$('#back_button').fadeIn();
+		});
+
+		// add marker to map
+		new mapboxgl.Marker(el, {offset: [-marker.properties.iconSize[0] / 2, -marker.properties.iconSize[1] / 2]})
+			.setLngLat(marker.geometry.coordinates)
+			.addTo(map);
+	});
+
+	// marker's secondary properties
+	map.on('load', function(){
+		map.addSource('points', {
+			'type': 'geojson',
+			'data': {
+				'type': 'FeatureCollection',
+				'features': [{
+					'type': 'Feature',
+					'geometry': {
+						'type': 'Point',
+						'coordinates': [-122.267548, 37.811635]
+					},
+					'properties': {
+						'title': 'Great Wall of Oakland'
+					}
+				}]
+			}
+		});
+
+		map.addLayer({
+			'id': 'points',
+			'type': 'symbol',
+			'source': 'points',
+			'layout': {
+				'text-field': '{title}',
+				'text-font': ['Mark Offc Pro Regular', 'Open Sans Semibold'],
+				'text-size': 22,
+				'text-letter-spacing': 0.2,
+				'text-offset': [0, -1.8],
+				'text-anchor': 'bottom'
+			}
+		});
+	});
+
+	// flyTo coords
+	var theWall = {
+		bearing: 27,
+		center: [-122.267548, 37.811635],
+		zoom: 17,
+		pitch: 20
+	}
+
+	$('.splash').on('click', function(){
+		// fly the fuck to it!
+		map.flyTo(theWall);
+		$('.splash').fadeOut(500);
+	});
 
 	$('body').on('click', '#back_button', function(){
 		$('.content_div').slideUp();
 		$('#back_button').fadeOut();
-		map.featureLayer.eachLayer(function(marker) {
-			// if (marker.feature.properties.description === 'Great Wall of Oakland') {
-        marker.openPopup();
-      // }
-    });
 	})
 
 	$('body').on('click', '#submit_button', function(){
@@ -50,16 +102,5 @@ function initialize_map(event){
 			$('.notice').slideUp('slow')
 		},3000);
 	});
-
-
-	$('.splash').on('click', function(){
-		// show the marker info window immediately
-		map.featureLayer.eachLayer(function(marker) {
-			if (marker.feature.properties.description === 'Great Wall of Oakland') {
-        marker.openPopup();
-      }
-    });
-		$('.splash').fadeOut(500);
-	})
 
 };
