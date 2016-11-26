@@ -82,7 +82,7 @@ function initialize_map(event){
 	var theWall = {
 		bearing: 27,
 		center: [-122.267548, 37.811635],
-		zoom: 15.5,
+		zoom: 17,
 		pitch: 20
 	}
 
