@@ -10,7 +10,7 @@
         <div style="font-size:24px"><%= checkin.name %></div>
         <%= simple_format(checkin.comment) %>
         <% if checkin.image %>
-       		<%= image_tag checkin.image.url(:square) %><br>
+       		<%= image_tag checkin.image.url(:medium) %><br>
         <% end %>
       </div>
     <%end%>
@@ -21,7 +21,7 @@
   	 		<div style="font-size:24px"><%= checkin.name %></div>
   	 	  <%= simple_format(checkin.comment) %>
       	<% if checkin.image %>
-       		<%= image_tag checkin.image.url(:square) %><br>
+       		<%= image_tag checkin.image.url(:medium) %><br>
       	<% end %>
    		</div>
     <% end %>
