@@ -1,35 +1,37 @@
-<%= form_for(@checkin, multipart: true, remote: true) do |f| %>
-  <% if @checkin.errors.any? %>
-    <div style="color:red" id="error_explanation">
-      <p>Your check-in didn't save:</p>
-      <% @checkin.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
 
+  <%= form_for(@checkin, multipart: true, remote: true) do |f| %>
+  
+    <% if @checkin.errors.any? %>
+      <div style="color:red" id="error_explanation">
+        <p>Your check-in didn't save:</p>
+        <% @checkin.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </div>
+    <% end %>
+    
+    <div class="form-group">
+        <%= f.hidden_field :location_id, value: @location.id %>
+      <div class="col-lg-8 col-md-10 col-sm-10 col-xs-12 col-md-offset-1 col-sm-offset-1 col-lg-offset-2">
+        <%= f.text_field :name, placeholder: "Name", class:"field" %>
+      </div>      
+
+      <div class="col-lg-8 col-md-10 col-sm-10 col-xs-12 col-md-offset-1 col-sm-offset-1 col-lg-offset-2">
+        <%= f.text_area :comment, cols: 40, rows: 2, placeholder: "Comment", class: "field" %>
+      </div>      
+      <div class="col-lg-8 col-md-10 col-sm-10 col-xs-12 col-md-offset-1 col-sm-offset-1 col-lg-offset-2">
+        <%= f.file_field :image, class: "file-field" %>
+      </div>
     </div>
-  <% end %>
-
-  <%= f.hidden_field :location_id, value: @location.id %>
-  <div class="field name-field">
-    <%= f.label :name %>
-    <%= f.text_field :name, placeholder: "What do they call you?" %>
-  </div>
-  <div class="field comment-field">
-    <%= f.label :comment %>&nbsp;<a style="color:red" class="about_modal" data-toggle="modal" data-target="#commentModal">(?)</a>
-
-    <%= f.text_area :comment, cols: 40, rows: 2, placeholder: "What do you think? - Click the ? for a tip" %>
-  </div>
-  <div class="field image-upload">
-    <%= f.label :image %>
-    <%= f.file_field :image %>
-  </div>
-  <div id="submit_button" class="actions">
-    <%= f.submit 'Check in!' %>
-    <p class="upload-note">*Photo uploads take 5-30 seconds. Please be patient.</p>
-  </div>
-  <!-- create some scroll space after form if no checkins there -->
+    
+    <div class="form-group">
+      <div class="col-lg-6 col-md-8 col-sm-8 col-xs-10 col-md-offset-2 col-sm-offset-2 col-lg-offset-3">
+        <%= f.submit class: "btn btn-primary btn-lrg" %>
+      </div>
+    </div>
+    
     <% if !@location.checkins.any? %>
       <br><br><br>
     <% end %>
-
-<% end %>
+    
+  <% end %>

@@ -1,6 +1,9 @@
 // Place all the styles related to the checkins controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.reds {
+	border: 2px solid red;
+}
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
@@ -132,7 +135,7 @@ a:hover {
 	background-color: rgba(0,0,0,0.8);
 	color: #fff;
 	font-size: 20px;
-	padding: 0 280px;
+	// padding: 0 280px;
 	width: 100%;
 	top: 0;
 	border: 0;
@@ -232,6 +235,10 @@ a:hover {
 	}
 }
 
+#form-div{
+	margin-bottom: 45px;
+}
+
 .comment-field {
 	padding-top: 15px;
 }
@@ -294,18 +301,34 @@ a:hover {
 #name {
 	height: 30px;
 }
+	
+#new_checkin .field{	
+	background-color: transparent;
+}
+
+#new_checkin .file-field{	
+    padding: 3px;
+}
 
 #new_checkin input,
 #new_checkin textarea {
-	color: #000;
+	color: white;
 	font-size: 17px;
 	width: 100%;
+	border: 1px solid white;
+	padding: 10px 5px;
+	margin: 10px;
 	#checkin_photo {
 		color: #FFF;
 		font-size: 17px;
 		width: 100%;
 	}
 }
+
+#new_checkin #checkin_image{
+	color: rgba(243, 156, 18,.70);
+}
+
 
 input, textarea {
 	width: 100%;

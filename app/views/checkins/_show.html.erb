@@ -14,17 +14,20 @@
   <hr/>
 </div>
 
-<div id="site-1">
-  <%= render 'form' %>
-
+<div id="site-1" class="col-md-10 col-sm-10 col-xs-12">
+  <div id="form-div" class="col-lg-8 col-md-10 col-sm-10 col-xs-12 col-md-offset-1 col-sm-offset-1 col-lg-offset-2">
+    <%= render 'form' %>
+  </div>
   <br>
   <% @location.checkins.reverse_order.each do |f| %>
-    <span style="font-size:25px"><%= f.name %></span><br>
-       <%= simple_format(f.comment) %>
-       <% if f.image %>
-       		<%= image_tag f.image.url(:medium) %><br>
-       <% end %>
-       <span style="font-size:12px">&#149;<%= f.created_at.strftime("%b %e, %Y %l:%M %p") %></span><br>
-    <br>
+    <div class="col-lg-8 col-md-10 col-sm-10 col-xs-12 col-md-offset-1 col-sm-offset-1 col-lg-offset-2">
+      <span style="font-size:25px"><%= f.name %></span><br>
+         <%= simple_format(f.comment) %>
+         <% if f.image %>
+         		<%= image_tag f.image.url(:medium) %><br>
+         <% end %>
+         <span style="font-size:12px">&#149;<%= f.created_at.strftime("%b %e, %Y %l:%M %p") %></span><br>
+      <br>
+    </div>
   <% end %>
 </div>
