@@ -1,7 +1,7 @@
 <div class="allcheckins_container">
   <h1>All the checkins.</h1>
 
-  <div class="allCheckins">
+  <div class="allCheckins col-xs-10 ">
 
     <% @all_checkins.each do |checkin| %> <!-- get checkins for "see all" -->
       <div id="each_one" class= 'all'>
@@ -15,7 +15,7 @@
 
 
   	<% @all_checkins.each do |checkin| %> <!-- get checkins for filtered results -->
-  		<div id="each_one" class="<%= (checkin.location.name.gsub(/\s+/,"")).downcase %>">
+  		<div id="each_one" class=" col-xs-10 col-xs-offset-1 <%= (checkin.location.name.gsub(/\s+/,"")).downcase %>">
   	 		<div style="font-size:24px"><%= checkin.name %></div>
   	 	  <%= simple_format(checkin.comment) %>
       	<% if checkin.image %>
