@@ -15,8 +15,8 @@ function initialize_map(event){
 		container: 'map',
 		style: 'mapbox://styles/mapbox/light-v9',
 		center: [-122.267548, 37.811635],
-		pitch: 60, // pitch
-		bearing: -60, // bearing
+		pitch: 100, // pitch
+		bearing: -10, // bearing
 		zoom: 9
 	});
 
