@@ -9,8 +9,8 @@
       <div id="each_one" class= 'all'>
         <div style="font-size:24px"><%= checkin.name %></div>
         <%= simple_format(checkin.comment) %>
-        <% if checkin.image.present? %>
-          <%= image_tag attachment_url(checkin, :image, :fill, 300, 300) %><br>
+        <% if checkin.image %>
+       		<%= image_tag checkin.image.url(:square) %><br>
         <% end %>
       </div>
     <%end%>
@@ -20,8 +20,8 @@
   		<div id="each_one" class="<%= (checkin.location.name.gsub(/\s+/,"")).downcase %>">
   	 		<div style="font-size:24px"><%= checkin.name %></div>
   	 	  <%= simple_format(checkin.comment) %>
-      	<% if checkin.image.present? %>
-       		<%= image_tag attachment_url(checkin, :image, :fill, 300, 300) %><br>
+      	<% if checkin.image %>
+       		<%= image_tag checkin.image.url(:square) %><br>
       	<% end %>
    		</div>
     <% end %>
