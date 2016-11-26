@@ -14,7 +14,7 @@ function initialize_map(event){
 	var map = new mapboxgl.Map({
 		container: 'map',
 		style: 'mapbox://styles/mapbox/light-v9',
-		center: [-122.270213, 37.810661],
+		center: [-122.267548, 37.811635],
 		pitch: 60, // pitch
 		bearing: -60, // bearing
 		zoom: 9
@@ -54,7 +54,7 @@ function initialize_map(event){
 					'type': 'Feature',
 					'geometry': {
 						'type': 'Point',
-						'coordinates': [-122.270213, 37.810661]
+						'coordinates': [-122.267548, 37.811635]
 					},
 					'properties': {
 						'title': 'Great Wall of Oakland'
@@ -81,7 +81,7 @@ function initialize_map(event){
 	// flyTo coords
 	var theWall = {
 		bearing: 27,
-		center: [-122.270213, 37.810661],
+		center: [-122.267548, 37.811635],
 		zoom: 15.5,
 		pitch: 20
 	}

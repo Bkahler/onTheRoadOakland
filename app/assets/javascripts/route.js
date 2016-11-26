@@ -11,8 +11,8 @@ var geojson = {
 			'geometry': {
 				'type': 'Point',
 				'coordinates': [
-					-122.270213,
-					37.810661
+					-122.267548,
+					37.811635
 				]
 			}
 		}
