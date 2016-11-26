@@ -31,6 +31,7 @@ gem 'remotipart', '~> 1.0'
 
 gem 'paperclip'
 gem 'aws-sdk', '~> 2.3'
+gem 'fog'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
