@@ -42,7 +42,15 @@ function initialize_map(event){
 		new mapboxgl.Marker(el, {offset: [-marker.properties.iconSize[0] / 2, -marker.properties.iconSize[1] / 2]})
 			.setLngLat(marker.geometry.coordinates)
 			.addTo(map);
+
+		// // var myMarker = new mapboxgl.Marker([el.style.width, el.style.height], { /* Options */ });
+		// map.on('zoomend', function() {
+		// 	var currentZoom = map.getZoom();
+		// 	marker.setRadius(currentZoom);
+		// });
+
 	});
+
 
 	// marker's secondary properties
 	map.on('load', function(){
@@ -91,6 +99,12 @@ function initialize_map(event){
 		map.flyTo(theWall);
 		$('.splash').fadeOut(500);
 	});
+
+	// close the mobile collaple menu when clicking off it
+	$('body').on('click', function(){
+		$('.navbar-collapse').collapse('hide');
+	})
+
 
 	$('body').on('click', '#back_button', function(){
 		$('.content_div').slideUp();
