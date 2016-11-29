@@ -11,7 +11,12 @@
 	}
 }
 @mixin medium-screen {
-	@media only screen and (min-width: 768px) and (max-width: 1024px) {
+	@media only screen and (min-width: 770px) and (max-width: 1024px) {
+		@content;
+	}
+}
+@mixin ipad-landscape-screen {
+	@media only screen and (min-width: 768px) and (max-width: 770px) {
 		@content;
 	}
 }
@@ -71,6 +76,10 @@ a:hover {
 		font-size: 18px;
 		letter-spacing: 0;
 	}
+	@include ipad-landscape-screen {
+		font-size: 14px;
+		letter-spacing: -1px;
+	}
 	@include small-screen {
 		font-size: 14px;
 		letter-spacing: -1px;
@@ -85,6 +94,10 @@ a:hover {
 			font-size: 13px;
 			letter-spacing: 0;
 		}
+		@include ipad-landscape-screen {
+			font-size: 13px;
+			letter-spacing: 0;
+		}
 	}
 }
 
@@ -92,6 +105,9 @@ a:hover {
 	display: block;
 	margin: 8px 0 -10px;
 	@include medium-screen {
+		display: none;
+	}
+	@include ipad-landscape-screen {
 		display: none;
 	}
 	@include small-screen {
@@ -162,7 +178,7 @@ a:hover {
 	padding: 50px 0 15px 0;
 	opacity: 0.6;
 	@include medium-screen {
-		width: 55%;
+		width: 50%;
 		padding: 100px 0 15px 0;
 	}
 	@include small-screen {
@@ -174,6 +190,10 @@ a:hover {
 	text-align: center;
 	margin: 40px 10px 10px;
 	font-size: 22px;
+	@include ipad-landscape-screen {
+		position: fixed;
+		margin: 315px 10px 10px;
+	}
 	@include small-screen {
 		position: fixed;
 		margin: 155px 10px 10px;
@@ -232,6 +252,9 @@ a:hover {
 	z-index: 100;
 	@include medium-screen {
 		padding: 0 150px;
+	}
+	@include ipad-landscape-screen {
+		padding: 0 90px;
 	}
 	@include small-screen {
 		height: 30%;
