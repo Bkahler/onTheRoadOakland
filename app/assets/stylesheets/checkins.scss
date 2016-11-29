@@ -483,15 +483,19 @@ body .commentModal {
 
 .back_link {
 	color: $buttons !important;
-	font-size: 28px;
+	font-size: 18px;
 	float: right;
-	padding: 30px 30px 10px;
+	padding: 40px 55px 10px;
 	text-decoration: none !important;
 	&:hover {
 		color: darken($buttons, 10%) !important;
 	}
+	@include medium-screen {
+		font-size: 20px;
+		padding: 40px 22px 10px;
+	}
 	@include small-screen {
-		font-size: 24px;
+		font-size: 20px;
 		padding: 0 0 5px;
 		text-align: center;
 		width: 100%;
