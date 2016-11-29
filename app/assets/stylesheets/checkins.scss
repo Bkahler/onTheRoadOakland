@@ -1,22 +1,24 @@
 // Place all the styles related to the checkins controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.reds {
-	border: 2px solid red;
-}
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
 // media-query breakpoints
 @mixin large-screen {
-  @media only screen and (min-width: 769px) {
-    @content;
-  }
+	@media only screen and (min-width: 1025px) {
+		@content;
+	}
+}
+@mixin medium-screen {
+	@media only screen and (min-width: 768px) and (max-width: 1024px) {
+		@content;
+	}
 }
 @mixin small-screen {
-  @media only screen and (max-width: 768px) {
-    @content;
-  }
+	@media only screen and (max-width: 767px) {
+		@content;
+	}
 }
 
 @mixin transition($property: all, $duration: .4s, $easing: ease-in-out) {
@@ -31,12 +33,12 @@
 $buttons: #1B8E99;
 
 html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100%;
-  background-color: #ccc;
-  font-family: 'Spinnaker', sans-serif;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;
+	background-color: #ccc;
+	font-family: 'Spinnaker', sans-serif;
 }
 
 h2 {
@@ -64,6 +66,10 @@ a:hover {
 .nav_title {
 	font-family: 'Cherry Cream Soda', cursive;
 	font-size: 25px;
+	@include medium-screen {
+		font-size: 18px;
+		letter-spacing: 0;
+	}
 	@include small-screen {
 		font-size: 14px;
 		letter-spacing: -1px;
@@ -71,6 +77,9 @@ a:hover {
 	.subtitle {
 		font-size: 20px;
 		letter-spacing: 2px;
+		@include medium-screen {
+			font-size: 16px;
+		}
 		@include small-screen {
 			font-size: 13px;
 			letter-spacing: 0;
@@ -80,7 +89,10 @@ a:hover {
 
 .navbar-icon {
 	display: block;
-  margin: 8px 0 -10px;
+	margin: 8px 0 -10px;
+	@include medium-screen {
+		display: none;
+	}
 	@include small-screen {
 		display: none;
 	}
@@ -95,17 +107,17 @@ a:hover {
 	@include transition;
 	&:hover {
 		-webkit-box-shadow: 0px 0px 15px 0px rgba(255, 255, 255, 0.75);
-		-moz-box-shadow:    0px 0px 15px 0px rgba(255, 255, 255, 0.75);
-		box-shadow:         0px 0px 15px 0px rgba(255, 255, 255, 0.75);
+		-moz-box-shadow:		0px 0px 15px 0px rgba(255, 255, 255, 0.75);
+		box-shadow:				 0px 0px 15px 0px rgba(255, 255, 255, 0.75);
 	}
 }
 
 
 #map {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 100%;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 100%;
 }
 
 .main_container {
@@ -127,7 +139,18 @@ a:hover {
 
 .marker {
 	cursor: pointer;
+	// animation: bump 0.2s infinite;
 }
+
+// @keyframes bump {
+//	0%, 100% {
+//		 transform: scale(1);
+//	 }
+//	 50% {
+//		 transform: scale(1.2);
+//	 }
+// }
+
 
 .content_div {
 	display: none;
@@ -135,23 +158,22 @@ a:hover {
 	background-color: rgba(0,0,0,0.8);
 	color: #fff;
 	font-size: 20px;
-	// padding: 0 280px;
+	padding: 0 280px;
 	width: 100%;
 	top: 0;
 	border: 0;
 	z-index: 100;
+	@include medium-screen {
+		padding: 0 30px;
+	}
 	@include small-screen {
-		position: absolute;
-		width: 100%;
 		height: 30%;
-		top: 0;
-		bottom: 0;
 		padding: 0;
-		z-index: 100;
 	}
 }
 
 .splash {
+	display: block;
 	position: absolute;
 	background-color: rgba(0,0,0,0.8);
 	color: #fff;
@@ -180,6 +202,10 @@ a:hover {
 		}
 	}
 }
+.splash:target, /* and hide either if class show is present (on click) */
+.splash.hide {	/* or location hash matches id "shoes" */
+		display: none;
+}
 
 .welcome_title {
 	@include small-screen{
@@ -199,12 +225,16 @@ a:hover {
 	width: 50%;
 	height: auto;
 	display: block;
-  margin: 0 auto;
-  padding: 50px 0 15px 0;
-  @include small-screen {
-  	width: 80%;
-  	padding: 40px 0 15px 0;
-  }
+	margin: 0 auto;
+	padding: 50px 0 15px 0;
+	@include medium-screen {
+		width: 80%;
+		padding: 100px 0 15px 0;
+	}
+	@include small-screen {
+		width: 80%;
+		padding: 50px 0 15px 0;
+	}
 }
 
 .content_header,
@@ -213,7 +243,7 @@ a:hover {
 	margin: 60px 15px 0;
 	@include small-screen {
 		text-align: left;
-		margin: 50px 5px 10px 20px;
+		margin: 50px 15px 10px 15px;
 	}
 }
 
@@ -235,38 +265,63 @@ a:hover {
 	}
 }
 
-#form-div{
-	margin-bottom: 45px;
+.name-field {
+	input {
+		color: #303030;
+		padding: 5px;
+		width: 100% !important;
+		background: ghostwhite;
+		border: 0;
+	}
 }
 
 .comment-field {
 	padding-top: 15px;
+	textarea {
+		color: #303030;
+		padding: 5px;
+		width: 100% !important;
+		background: ghostwhite;
+		border: 0;
+	}
 }
 
 .image-upload {
-	padding-top: 5px;
+	padding-top: 15px;
 	input {
 		color: #fff;
 	}
+	::-webkit-file-upload-button {
+		background: $buttons;
+		color: #fff;
+		padding: 5px 10px;
+		border: 0;
+		outline: 0;
+		margin-right: 10px;
+		cursor: pointer;
+	}
 }
+
 
 #submit_button {
 	input {
 		@include transition;
 		color: #fff !important;
 		margin-top: 20px;
-		display: block;
+		// display: block;
 		background-color: $buttons;
 		border: 0;
 		padding: 5px;
+		width: 100%;
+		text-align: center;
 		&:hover {
-			background-color: darken($buttons, 20%);
+			background-color: darken($buttons, 15%);
 		}
-  }
+	}
 }
 
 .upload-note {
-	color: red;
+	color: indianred;
 	font-size: 15px;
 	margin-top: 6px;
 }
@@ -274,8 +329,15 @@ a:hover {
 .site1_title {
 	font-size: 30px;
 	letter-spacing: 8px;
+	@include large-screen {
+		width: 50%;
+		margin: 0 auto;
+		line-height: 1.1;
+	}
 	@include small-screen {
 		font-size: 25px;
+		padding: 10px 0 0;
+		margin-bottom: -3px;
 	}
 }
 
@@ -285,92 +347,45 @@ a:hover {
 	}
 }
 
-.site1_desc {
-	font-size: 22px;
-	letter-spacing: 3px;
-	@include small-screen {
-		font-size: 20px;
-	}
-}
+// .site1_desc {
+// 	font-size: 22px;
+// 	letter-spacing: 3px;
+// 	@include small-screen {
+// 		font-size: 20px;
+// 	}
+// }
 
 .about_modal, .howitworks_modal {
 	cursor: pointer;
 }
 
-/*The form*/
-#name {
-	height: 30px;
-}
-	
-#new_checkin .field{	
-	background-color: transparent;
-}
-
-#new_checkin .file-field{	
-    padding: 3px;
-}
-
-#new_checkin input,
-#new_checkin textarea {
-	color: white;
-	font-size: 17px;
-	width: 100%;
-	border: 1px solid white;
-	padding: 10px 5px;
-	margin: 10px;
-	#checkin_photo {
-		color: #FFF;
-		font-size: 17px;
-		width: 100%;
-	}
-}
-
-#new_checkin #checkin_image{
-	color: rgba(243, 156, 18,.70);
-}
-
-
-input, textarea {
-	width: 100%;
-}
-
-#submit_button {
-	margin-top: 4px;
-}
-
-#entry_form {
-	margin: 10px;
-}
-
-.addPhotoButton {
-	width: 100%;
-}
-/*end form style*/
-
 body .commentModal {
 	width: 350px;
 	margin-left: auto;
-  margin-right: auto;
+	margin-right: auto;
 	font-size: 20px;
 }
 
 #back_button {
 	background-color: $buttons;
 	color: #ecf0f1;
-	font-size: 16px;
+	font-size: 14px;
 	display: block;
-	top: 105px;
+	top: 66px;
 	right: 295px;
 	position: absolute;
 	border-radius: 0;
 	@include transition;
 	&:hover {
-		background-color: darken($buttons, 20%);
+		background-color: darken($buttons, 15%);
+	}
+	@include medium-screen {
+		right: 45px;
 	}
 	@include small-screen {
-    top: 85px;
-    right: 15px;
-    font-size: 14px;
+		top: 60px;
+		right: 15px;
+		font-size: 13px;
 	}
 }
 
@@ -389,29 +404,29 @@ body .commentModal {
 
 /*/////////all isotope css//////////*/
 .isotope-item {
-    z-index: 2;
+		z-index: 2;
 }
 .isotope-hidden.isotope-item {
-    pointer-events: none;
-    z-index: 1;
+		pointer-events: none;
+		z-index: 1;
 }
 .isotope,
 .isotope .isotope-item {
-  /* change duration value to whatever you like */
+	/* change duration value to whatever you like */
 
-    -webkit-transition-duration: 0.8s;
-    -moz-transition-duration: 0.8s;
-    transition-duration: 0.8s;
+		-webkit-transition-duration: 0.8s;
+		-moz-transition-duration: 0.8s;
+		transition-duration: 0.8s;
 }
 .isotope {
-    -webkit-transition-property: height, width;
-    -moz-transition-property: height, width;
-    transition-property: height, width;
+		-webkit-transition-property: height, width;
+		-moz-transition-property: height, width;
+		transition-property: height, width;
 }
 .isotope .isotope-item {
-    -webkit-transition-property: -webkit-transform, opacity;
-    -moz-transition-property: -moz-transform, opacity;
-    transition-property: transform, opacity;
+		-webkit-transition-property: -webkit-transform, opacity;
+		-moz-transition-property: -moz-transform, opacity;
+		transition-property: transform, opacity;
 }
 /* ////end isotope/// */
 
@@ -429,7 +444,7 @@ body .commentModal {
 .allcheckins_container {
 	background-color: rgba(0,0,0,0.8);
 	color: #fff;
-	padding: 50px 0px 30px 0px;
+	padding: 50px 10px 30px 10px;
 	width: 100%;
 	min-height: 100vh;
 	border: 0;
@@ -441,87 +456,16 @@ body .commentModal {
 #each_one {
 	margin: 11px;
 	padding: 10px;
-	background-color: transparent;
-	border: 1px solid white;
-	border-radius: 0 px;
+	background-color: gray;
+	border-radius: 4px;
 	width: 31%;
 	font-size: 20px;
 	img {
-		border-radius: 1px;
+		border-radius: 4px;
 		width: 100%;
 		height: auto;
 	}
-}
-
-.all_of_them {
-	width: 50%;
-	margin: -13px auto -12px auto;
-	display: block;
-	text-align: center;
-	letter-spacing: 5px;
-}
-
-#locations_links {
-	margin: 0.5% auto;
-	width: 100%;
-	display: block;
-	text-align: center; /*centers all the buttons regardless of page width*/
-	a {
-		background-color: #16a085;
-		color: #ecf0f1;
-		font-size: 16px;
-		padding: 5px 15px 5px 15px;
-		border-radius: 30px;
-		&:hover {
-			text-decoration: none;
-			color: #bdc3c7;
-			background-color: #2c3e50;
-			-webkit-transition: all 0.4s ease;
-			-moz-transition: all 0.4s ease;
-			-o-transition: all 0.4s ease;
-			transition: all 0.4s ease;
-		}
-		  /*for persistent currently selected color - same as hover*/
-		&.current {
-			background-color: #2c3e50;
-		}
-	}
-}
-
-.filter_links {
-	/*margin: -15px 0.4% 10px 0.3%;   -- optimized for iPad landscape*/
-	margin: -15px 1.4% 10px 1.3%; /*-- optimized for laptop view*/
-	display: inline;
-	vertical-align: 20px; /*creates a space at bottom of buttons*/
-}
-
-.back_link, .back_link:hover {
-	font-size: 30px;
-	margin-left: 40%;
-	text-decoration: none;
-	@include small-screen {
-		font-size: 24px;
-		margin-left: 25%;
-		text-decoration: none;
-	}
-}
-
-@media (max-width: 767px) {
-
-	.bird_on_it {
-		width: 80px;
-		height: auto;
-		float: left;
-	  margin: 15px 5px 15px 10px;
-	  padding-top: 0;
-	}
-
-	.subtitle {
-		font-size: 13px;
-		letter-spacing: 0px;
-	}
-
-	#each_one {
+	@include small-screen{
 		margin: 9px;
 		padding: 9px;
 		width: auto;
@@ -531,9 +475,50 @@ body .commentModal {
 			height: auto;
 		}
 	}
+}
 
-	.filter_links {
-		margin-left: 5%;
+.allcheckins-title {
+	font-size: 35px;
+	padding: 20px 15px 10px;
+	float: left;
+	@include small-screen {
+		font-size: 32px;
+		text-align: center;
+		width: 100%;
+	}
+}
+
+.back_link {
+	color: $buttons !important;
+	font-size: 28px;
+	float: right;
+	padding: 30px 30px 10px;
+	text-decoration: none !important;
+	&:hover {
+		color: darken($buttons, 10%) !important;
+	}
+	@include small-screen {
+		font-size: 24px;
+		padding: 0 0 5px;
+		text-align: center;
+		width: 100%;
+		margin-top: -10px;
+	}
+}
+
+@media (max-width: 767px) {
+
+	.bird_on_it {
+		width: 80px;
+		height: auto;
+		float: left;
+		margin: 15px 5px 15px 10px;
+		padding-top: 0;
+	}
+
+	.subtitle {
+		font-size: 13px;
+		letter-spacing: 0px;
 	}
 
 }
