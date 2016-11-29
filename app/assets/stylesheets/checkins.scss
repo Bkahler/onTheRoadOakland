@@ -41,13 +41,6 @@ html, body {
 	font-family: 'Spinnaker', sans-serif;
 }
 
-h2 {
-	font-size: 28px;
-	@include small-screen{
-		font-size: 24px;
-	}
-}
-
 hr {
 	margin: 15px 0 0 0;
 }
@@ -61,6 +54,14 @@ a:hover {
 	margin: 0;
 	-webkit-margin-before:0em;
 	-webkit-margin-after:0em;
+	.navbar-brand {
+		@include medium-screen {
+			margin: 0 -10px 0 -18px !important;
+		}
+	}
+	.navbar-nav {
+		margin-top: 4px !important;
+	}
 }
 
 .nav_title {
@@ -128,8 +129,6 @@ a:hover {
 }
 
 .map_div {
-	// float: left;
-	// width: 65%;
 	width: 100%;
 	height: 100%;
 	padding: 0;
@@ -142,93 +141,28 @@ a:hover {
 	// animation: bump 0.2s infinite;
 }
 
-// @keyframes bump {
-//	0%, 100% {
-//		 transform: scale(1);
-//	 }
-//	 50% {
-//		 transform: scale(1.2);
-//	 }
-// }
-
-
-.content_div {
-	display: none;
-	position: absolute;
-	background-color: rgba(0,0,0,0.8);
-	color: #fff;
-	font-size: 20px;
-	padding: 0 280px;
-	width: 100%;
-	top: 0;
-	border: 0;
-	z-index: 100;
-	@include medium-screen {
-		padding: 0 30px;
-	}
-	@include small-screen {
-		height: 30%;
-		padding: 0;
-	}
-}
 
 .splash {
 	display: block;
 	position: absolute;
 	background-color: rgba(0,0,0,0.8);
 	color: #fff;
-	font-size: 20px;
-	padding: 0px 10px 30px 10px;
 	width: 100%;
 	height: 100%;
 	border: 0;
 	top: 0;
 	left: 0;
 	z-index: 101;
-	#welcome {
-		text-align: center;
-		margin: 40px 10px 10px 10px;
-		font-size: 22px;
-		@include small-screen {
-			position: fixed;
-			margin: 80px 10px 10px 10px;
-		}
-	}
-	#welcome_title {
-		line-height: 20px;
-		margin: 20px 0 20px 0;
-		@include small-screen {
-			margin-top: 5px
-		}
-	}
 }
-.splash:target, /* and hide either if class show is present (on click) */
-.splash.hide {	/* or location hash matches id "shoes" */
-		display: none;
-}
-
-.welcome_title {
-	@include small-screen{
-		font-size: 18px;
-		letter-spacing: 5px;
-	}
-}
-
-.welcome_subtitle {
-	@include small-screen {
-		margin-top: -10px;
-		font-size: 15px;
-	}
-}
-
 .oakland-oak {
 	width: 50%;
 	height: auto;
 	display: block;
 	margin: 0 auto;
 	padding: 50px 0 15px 0;
+	opacity: 0.6;
 	@include medium-screen {
-		width: 80%;
+		width: 55%;
 		padding: 100px 0 15px 0;
 	}
 	@include small-screen {
@@ -236,6 +170,42 @@ a:hover {
 		padding: 50px 0 15px 0;
 	}
 }
+#welcome {
+	text-align: center;
+	margin: 40px 10px 10px;
+	font-size: 22px;
+	@include small-screen {
+		position: fixed;
+		margin: 155px 10px 10px;
+	}
+}
+.welcome_title {
+	font-family: 'Cherry Cream Soda', 'Helvetica', cursive;
+	line-height: 20px;
+	margin: 20px 0;
+	letter-spacing: 5px;
+	font-size: 34px;
+	@include medium-screen {
+		font-size: 28px;
+	}
+	@include small-screen {
+		margin: 5px 0 20px;
+		font-size: 25px;
+		letter-spacing: 5px;
+	}
+}
+.welcome_subtitle {
+	font-size: 18px;
+	@include small-screen {
+		font-size: 16px;
+	}
+}
+// .splash:target, /* and hide either if class show is present (on click) */
+// .splash.hide {	/* or location hash matches id "shoes" */
+// 		display: none;
+// }
+
+
 
 .content_header,
 .created_container_header {
@@ -249,6 +219,26 @@ a:hover {
 
 
 // CHECKIN FORM
+.content_div {
+	display: none;
+	position: absolute;
+	background-color: rgba(0,0,0,0.8);
+	color: #fff;
+	font-size: 20px;
+	padding: 0 280px;
+	width: 100%;
+	top: 0;
+	border: 0;
+	z-index: 100;
+	@include medium-screen {
+		padding: 0 150px;
+	}
+	@include small-screen {
+		height: 30%;
+		padding: 0;
+	}
+}
+
 #site-1 {
 	color: #fff;
 	height: 79%;
@@ -291,6 +281,7 @@ a:hover {
 	input {
 		color: #fff;
 	}
+	// the only way to style a file upload button??
 	::-webkit-file-upload-button {
 		background: $buttons;
 		color: #fff;
@@ -302,6 +293,10 @@ a:hover {
 	}
 }
 
+// fix for horizontal scroll
+#checkin_image {
+	width: 100%;
+}
 
 #submit_button {
 	input {
@@ -367,25 +362,22 @@ body .commentModal {
 }
 
 #back_button {
-	background-color: $buttons;
-	color: #ecf0f1;
-	font-size: 14px;
-	display: block;
-	top: 66px;
-	right: 295px;
+	color: $buttons;
+	font-size: 28px;
+	top: 65px;
+  right: 295px;
 	position: absolute;
-	border-radius: 0;
+	cursor: pointer;
 	@include transition;
 	&:hover {
-		background-color: darken($buttons, 15%);
+		color: darken($buttons, 15%);
 	}
 	@include medium-screen {
-		right: 45px;
+		right: 165px;
 	}
 	@include small-screen {
-		top: 60px;
+		top: 65px;
 		right: 15px;
-		font-size: 13px;
 	}
 }
 
@@ -398,6 +390,7 @@ body .commentModal {
 	font-size: 17px;
 	text-align: center;
 }
+
 .notice_hide {
 	display: none;
 }
@@ -490,36 +483,22 @@ body .commentModal {
 
 .back_link {
 	color: $buttons !important;
-	font-size: 28px;
+	font-size: 18px;
 	float: right;
-	padding: 30px 30px 10px;
+	padding: 40px 55px 10px;
 	text-decoration: none !important;
 	&:hover {
 		color: darken($buttons, 10%) !important;
 	}
+	@include medium-screen {
+		font-size: 20px;
+		padding: 40px 22px 10px;
+	}
 	@include small-screen {
-		font-size: 24px;
+		font-size: 20px;
 		padding: 0 0 5px;
 		text-align: center;
 		width: 100%;
 		margin-top: -10px;
 	}
 }
-
-@media (max-width: 767px) {
-
-	.bird_on_it {
-		width: 80px;
-		height: auto;
-		float: left;
-		margin: 15px 5px 15px 10px;
-		padding-top: 0;
-	}
-
-	.subtitle {
-		font-size: 13px;
-		letter-spacing: 0px;
-	}
-
-}
-
