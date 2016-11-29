@@ -293,6 +293,10 @@ a:hover {
 	}
 }
 
+// fix for horizontal scroll
+#checkin_image {
+	width: 100%;
+}
 
 #submit_button {
 	input {
@@ -358,25 +362,22 @@ body .commentModal {
 }
 
 #back_button {
-	background-color: $buttons;
-	color: #ecf0f1;
-	font-size: 14px;
-	display: block;
-	top: 66px;
-	right: 295px;
+	color: $buttons;
+	font-size: 28px;
+	top: 65px;
+  right: 295px;
 	position: absolute;
-	border-radius: 0;
+	cursor: pointer;
 	@include transition;
 	&:hover {
-		background-color: darken($buttons, 15%);
+		color: darken($buttons, 15%);
 	}
 	@include medium-screen {
-		right: 45px;
+		right: 165px;
 	}
 	@include small-screen {
-		top: 60px;
+		top: 65px;
 		right: 15px;
-		font-size: 13px;
 	}
 }
 
