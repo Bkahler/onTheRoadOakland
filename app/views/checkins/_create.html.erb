@@ -19,9 +19,11 @@
     <div class="notice"><%= flash.now[:notice] %></div>
   	<span style="font-size:24px"><%= @checkin.name %></span><br>
   	<%= simple_format(@checkin.comment) %><br> <!-- simple_format(..) converts \n to line breaks in html -->
-  	<% if @checkin.image %>
+  	
+  	<% if @checkin.image.url %>
   		<%= image_tag @checkin.image.url(:medium) %>
   	<% end %>
+  	
     <span style="font-size:12px">&#149;<%= @checkin.created_at.strftime("%b %e, %Y %l:%M %p") %></span><br>
   </div>
 </div>
