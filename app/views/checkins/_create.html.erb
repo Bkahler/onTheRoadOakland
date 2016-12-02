@@ -20,7 +20,7 @@
   	<span style="font-size:24px"><%= @checkin.name %></span><br>
   	<%= simple_format(@checkin.comment) %><br> <!-- simple_format(..) converts \n to line breaks in html -->
   	
-  	<% if @checkin.image.url %>
+  	<% if @checkin.image_file_name %>
   		<%= image_tag @checkin.image.url(:medium) %>
   	<% end %>
   	

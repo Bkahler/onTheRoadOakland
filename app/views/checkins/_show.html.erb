@@ -17,7 +17,7 @@
   <% @location.checkins.reverse_order.each do |f| %>
     <span style="font-size:25px"><%= f.name %></span><br>
        <%= simple_format(f.comment) %>
-       <% if f.image %>
+       <% if f.image_file_name %>
        		<%= image_tag f.image.url(:medium) %><br>
        <% end %>
        <span style="font-size:12px">&#149;<%= f.created_at.strftime("%b %e, %Y %l:%M %p") %></span><br>
