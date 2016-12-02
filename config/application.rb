@@ -8,7 +8,7 @@ Bundler.require(*Rails.groups)
 
 module OnTheRoadOakland
   class Application < Rails::Application
-    
+     config.time_zone="Pacific Time (US & Canada)"
     # config.serve_static_assets = true
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
