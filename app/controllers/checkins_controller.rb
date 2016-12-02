@@ -11,6 +11,7 @@ class CheckinsController < ApplicationController
   def create
     @checkin = Checkin.new(checkin_params)
     @location = @checkin.location
+    @_checkin = Checkin.new
     if @checkin.save
       flash[:notice] = 'Your check-in was successfully saved!'
       respond_to do |format|
@@ -26,7 +27,7 @@ class CheckinsController < ApplicationController
   def show
     @location = Location.find_by_id(params[:id])
     @checkins = @location.checkins.reverse_order
-    @checkin = Checkin.new
+    @_checkin = Checkin.new
 
     respond_to do |format|
       format.js
