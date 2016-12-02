@@ -6,11 +6,7 @@
          <%= @checkin.name %>
        </b>
     </p>
-    <!-- <p class="site1_desc">
-      <b>
-        <%= @checkin.description %>
-      </b>
-    </p> -->
+    <%= @checkin.description %>
   </div>
 
   <i id="back_button" class="fa fa-window-close" aria-hidden="true"></i>
@@ -23,8 +19,8 @@
     <div class="notice"><%= flash.now[:notice] %></div>
   	<span style="font-size:24px"><%= @checkin.name %></span><br>
   	<%= simple_format(@checkin.comment) %><br> <!-- simple_format(..) converts \n to line breaks in html -->
-  	<% if @checkin.photo.present? %>
-  		<%= image_tag @checkin.photo.url(:medium) %>
+  	<% if @checkin.image %>
+  		<%= image_tag @checkin.image.url(:medium) %>
   	<% end %>
     <span style="font-size:12px">&#149;<%= @checkin.created_at.strftime("%b %e, %Y %l:%M %p") %></span><br>
   </div>
