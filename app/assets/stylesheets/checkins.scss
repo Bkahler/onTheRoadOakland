@@ -473,8 +473,11 @@ body .commentModal {
 		width: 100%;
 		height: auto;
 	}
+	@include ipad-landscape-screen {
+		margin: 4px;
+	}
 	@include small-screen{
-		margin: 9px;
+		margin: 5px;
 		padding: 9px;
 		width: auto;
 		font-size: 20px;
